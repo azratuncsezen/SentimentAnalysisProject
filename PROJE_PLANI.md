@@ -70,7 +70,7 @@ Her iki set de her sınıftan 1000 örnek olmak üzere **3000'er yorum** içerir
 | **Yöntem** | BERT | VADER (+ çeviri sonrası VADER) | LLM (Claude) |
 | **Klasör** | `bert/` | `vader/` | `llm/` |
 | **Çıktılar** | `results/bert_english.csv`, `results/bert_turkish.csv` | `results/vader_english.csv`, `results/vader_turkish.csv` (+ `results/vader_turkish_translated.csv`) | `results/llm_english.csv`, `results/llm_turkish.csv` |
-| **Ek iş** | API anahtarlarını ayarlar; GitHub birleştirmeleri | Veri seti bölümü; 100 nötr Türkçe yorumda etiket kontrolü | Prompt tasarımı, 50 yorumluk deneme, maliyet ölçümü, model önerisi |
+| **Ek iş** | GitHub birleştirmeleri | Veri seti bölümü; 100 nötr Türkçe yorumda etiket kontrolü | Kendi API anahtarını oluşturmak; prompt tasarımı, 50 yorumluk deneme, maliyet ölçümü, model önerisi |
 | **Rapordaki bölümü** | BERT: mimari, eğitim parametreleri | Giriş, veri setleri, VADER | LLM: model, prompt, parametreler, maliyet |
 | **Videodaki kısmı (~3 dk)** | BERT | Amaç, veri setleri, VADER | LLM |
 
@@ -139,8 +139,10 @@ Sonra GitHub'da **Pull Request** açılır, ekipten biri hızlıca bakar, `main`
 
 - Anahtar yalnızca **LLM** ve **çeviri** için gerekir; VADER ve BERT anahtar kullanmaz.
 - Herkesin aynı makinede ya da aynı anahtarla çalışması **gerekmez** — anahtar sadece kimin hesabından ödeneceğini belirler, sonucu etkilemez.
-- Berkay, Furkan için Anthropic Console'da **ayrı ve harcama limitli** bir anahtar oluşturur ve güvenli yoldan iletir (GitHub'a veya açık grup sohbetine yazılmaz). Proje bitince iptal edilir.
-- Kullanım: proje klasöründe `.env` dosyası oluşturup içine `ANTHROPIC_API_KEY=...` yazmak.
+- **Furkan kendi Anthropic hesabını açıp kendi API anahtarını oluşturur** (platform.claude.com → kredi yükleme → API Keys). Anahtar kimseyle paylaşılmaz; GitHub'a veya grup sohbetine yazılmaz. Console'dan harcama limiti koyması önerilir; proje bitince anahtar iptal edilebilir.
+- Maliyet ekip içinde paylaşılabilir. Kredi yüklemede sorun çıkarsa yedek plan: Berkay kendi hesabından Furkan için harcama limitli ayrı bir anahtar oluşturur.
+- Berkay kendi anahtarını yalnızca deneme ve kontrol amaçlı kullanır.
+- Kullanım: proje klasöründe `.env.example` dosyasını `.env` olarak kopyalayıp içine `ANTHROPIC_API_KEY=...` yazmak.
 
 **Tahmini maliyet** (6000 sınıflandırma + 3000 çeviri; kaba tahmin, ölçülmedi):
 
@@ -158,7 +160,7 @@ Tüm veri çalıştırılmadan önce 50 yorumluk deneme ile gerçek maliyet öl�
 
 | Gün | Berkay | Azra | Furkan |
 |---|---|---|---|
-| **Pazar 22 Kasım** | Ortam kurulumu, İngilizce RoBERTa, Türkçe eğitimi başlatmak; Furkan'ın anahtarını oluşturmak | Veri seti bölümünü yazmak | Anahtarı almak, prompt tasarımı, 50 yorumluk deneme |
+| **Pazar 22 Kasım** | Ortam kurulumu, İngilizce RoBERTa, Türkçe eğitimi başlatmak | Veri seti bölümünü yazmak | Kendi API anahtarını oluşturmak, prompt tasarımı, 50 yorumluk deneme |
 | **Pazartesi 23 Kasım** | Türkçe BERT sonuçları → PR | Çeviri + VADER, etiket kontrolü → PR | 6000 yorumu sınıflandırmak (+ çeviri) → PR |
 | **Salı 24 Kasım** | Sabah: `compare.ipynb` ve rapor bölümleri · Akşam: **hep birlikte** rapor birleştirme, slaytlar, video kaydı | | |
 | **Çarşamba 25 Kasım** | Son kontrol, çıktı, e-posta + elden teslim | | |

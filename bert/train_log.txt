@@ -1,0 +1,7 @@
+[2026-11-22 20:56:37] smoke=False temiz satır: 140954, test çıkarıldıktan sonra: 137954, çıkarılan: 3000, test yorum sayısı: 3000, kalan çakışma: 0
+eğitim: 27000, doğrulama: 3000; sınıf dağılımı (eğitim): {'neutral': 9000, 'positive': 9000, 'negative': 9000}
+cihaz: mps; parametreler: max_len=128 batch=16 lr=2e-05 epoch=2 wd=0.01 warmup=0.06 seed=42
+eğitim süresi: 16.7 dk; son doğrulama metrikleri (en iyi model): acc=0.8233 macro_f1=0.8221
+  epoch 1: val_acc=0.8153 val_macro_f1=0.8122 val_loss=0.4586
+  epoch 2: val_acc=0.8233 val_macro_f1=0.8221 val_loss=0.4513
+model kaydedildi: bert/models/berturk-trsa

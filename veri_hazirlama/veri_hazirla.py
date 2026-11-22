@@ -3,7 +3,8 @@ from datasets import load_dataset
 import pandas as pd
 from pathlib import Path
 
-OUTPUT = Path("data")
+ROOT = Path(__file__).resolve().parent.parent
+OUTPUT = ROOT / "data"
 OUTPUT.mkdir(exist_ok=True)
 
 LABELS = {

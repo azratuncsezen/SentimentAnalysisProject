@@ -4,8 +4,9 @@ from pathlib import Path
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
-DATA = Path("data")
-RESULTS = Path("results")
+ROOT = Path(__file__).resolve().parent.parent
+DATA = ROOT / "data"
+RESULTS = ROOT / "results"
 RESULTS.mkdir(exist_ok=True)
 
 analyzer = SentimentIntensityAnalyzer()

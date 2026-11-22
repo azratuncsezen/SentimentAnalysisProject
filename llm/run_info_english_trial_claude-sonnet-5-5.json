@@ -1,0 +1,44 @@
+{
+  "language": "english",
+  "model": "claude-sonnet-5-5",
+  "n": 50,
+  "sample": true,
+  "mode": "realtime",
+  "temperature": 0,
+  "max_tokens": 50,
+  "system_prompt": "You are a sentiment classification system.\n\nClassify the overall sentiment expressed by the author of the given text into exactly one of three classes:\n- positive: the author expresses a favorable, approving, happy or satisfied attitude.\n- negative: the author expresses an unfavorable, critical, angry, sad or dissatisfied attitude.\n- neutral: the text has no clear sentiment, is factual or informational, or positive and negative parts balance out.\n\nThe text may be an English tweet or a Turkish product review. Read it in its own language. Ignore usernames, links and hashtag symbols unless they carry sentiment.\n\nAnswer in the required JSON format: {\"sentiment\": \"positive\" | \"negative\" | \"neutral\"}.",
+  "user_template": "<text>\n{text}\n</text>",
+  "response_format": "structured outputs (json_schema, enum: positive/negative/neutral)",
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "sentiment": {
+        "type": "string",
+        "enum": [
+          "positive",
+          "negative",
+          "neutral"
+        ]
+      }
+    },
+    "required": [
+      "sentiment"
+    ],
+    "additionalProperties": false
+  },
+  "accuracy": 0.66,
+  "errors_by_class": {
+    "negative": 4,
+    "neutral": 8,
+    "positive": 5
+  },
+  "invalid_responses": 0,
+  "input_tokens": 25370,
+  "output_tokens": 716,
+  "estimated_cost_usd": 0.0579,
+  "prices_usd_per_mtok": [
+    2.0,
+    10.0
+  ],
+  "written_at": "2026-11-22T15:02:37+00:00"
+}
